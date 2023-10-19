@@ -51,3 +51,6 @@ subcategory_df.to_csv("Resources/subcategory.csv", index=False)
 # Read the data into a Pandas DataFrame. Use the `header=2` parameter when reading in the data.
 contact_info_df = pd.read_excel('Resources/contacts.xlsx', header=2)
 contact_info_df.head()
+
+# Export the DataFrame as a CSV file. 
+contacts_df_clean.to_csv("Resources/contacts.csv", encoding='utf8', index=False)
