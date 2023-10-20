@@ -3,7 +3,11 @@ KU Data Analytics Bootcamp Project 2-ETL
 
 Data for this project was from the provided project files.
 
-Layout for assignment came from starter file.
+Layout and markdown throughout for assignment came from starter file.
+
+Dataframe and document names were provided throughout.
+
+Export sections to csv were provided throughout.
 
 Specific sections using sources listed below:
 
@@ -23,6 +27,10 @@ The following section:
 
 Was provided by professor Benjamin Alford to get around the error reading the file.
 
+--------------------------------------------------
+Create the Category and Subcategory DataFrames
+--------------------------------------------------
+
 The following was provided:
 
     # Create numpy arrays from 1-9 for the categories and 1-24 for the subcategories.
@@ -32,25 +40,22 @@ The following was provided:
     print(category_ids)
     print(subcategory_ids)
 
+The following section was using a method provided by Benjamin Alford:
+
+    # Use a list comprehension to add "cat" to each category_id. 
+    cat_ids = ["cat" + str(cat_id) for cat_id in category_ids]
 
 
-# Use a list comprehension to add "cat" to each category_id. 
-cat_ids = ["cat" + str(cat_id) for cat_id in category_ids]
+    # Use a list comprehension to add "subcat" to each subcategory_id.    
+    scat_ids = ["subcat" + str(scat_id) for scat_id in subcategory_ids]
 
+This section for extracting the contacts.xlsx data was provided:
 
-# Use a list comprehension to add "subcat" to each subcategory_id.    
-scat_ids = ["subcat" + str(scat_id) for scat_id in subcategory_ids]
+    # Read the data into a Pandas DataFrame. Use the `header=2` parameter when reading in the data.
+    contact_info_df = pd.read_excel('Resources/contacts.xlsx', header=2)
+    contact_info_df.head()
 
+The following method for splitting the first and last names was created with help from our substatute, Matthew Brady: 
 
-
-# Export categories_df and subcategories_df as CSV files.
-category_df.to_csv("Resources/category.csv", index=False)
-
-subcategory_df.to_csv("Resources/subcategory.csv", index=False)
-
-# Read the data into a Pandas DataFrame. Use the `header=2` parameter when reading in the data.
-contact_info_df = pd.read_excel('Resources/contacts.xlsx', header=2)
-contact_info_df.head()
-
-# Export the DataFrame as a CSV file. 
-contacts_df_clean.to_csv("Resources/contacts.csv", encoding='utf8', index=False)
+    # Create a "first"name" and "last_name" column with the first and last names from the "name" column.
+    contacts_df[["first_name","last_name"]] = contacts_df["name"].str.split(" ", n=1, expand=True)
