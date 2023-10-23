@@ -55,7 +55,7 @@ This section for extracting the contacts.xlsx data was provided:
     contact_info_df = pd.read_excel('Resources/contacts.xlsx', header=2)
     contact_info_df.head()
 
-The following method for splitting the first and last names was created with help from our substatute, Matthew Brady: 
+The following method for splitting the first and last names was created with help from our substitute, Matthew Brady: 
 
     # Create a "first"name" and "last_name" column with the first and last names from the "name" column.
     contacts_df[["first_name","last_name"]] = contacts_df["name"].str.split(" ", n=1, expand=True)
